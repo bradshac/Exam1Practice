@@ -8,8 +8,8 @@ These problems illustrate concepts that previous problems have not emphasized:
   -- animation (Problem 0c)
 
 Authors: David Mutchler, Valerie Galluzzi, Mark Hays, Amanda Stouder,
-         their colleagues and PUT_YOUR_NAME_HERE.
-"""  # TODO: 1. PUT YOUR NAME IN THE ABOVE LINE.
+         their colleagues and Alexander Bradshaw.
+"""  # Done: 1. PUT YOUR NAME IN THE ABOVE LINE.
 
 import rosegraphics as rg
 
@@ -164,6 +164,16 @@ def problem0a(n):
     #        ASK FOR HELP if you do not understand this hint.
     # ------------------------------------------------------------------
 
+    if sum_of_digits(n)%2 == 1:
+        return True
+    else:
+        return False
+
+
+
+
+
+
 
 def run_test_problem0b():
     """ Tests the   problem0b   function. """
@@ -227,6 +237,13 @@ def problem0b(n):
     #    **  use (call) the   is_prime   function that is DEFINED ABOVE.
     ####################################################################
     # ------------------------------------------------------------------
+
+    count = 0
+    for k in range(n+1):
+        if k >= 2:
+            if is_prime(k) == True:
+                count = count + 1
+    return count
 
 
 def run_test_problem0c():
@@ -295,6 +312,13 @@ def problem0c(circle, n, window):
     ####################################################################
     # ------------------------------------------------------------------
 
+    center = circle.center
+    circle.attach_to(window)
+
+    for k in range(n+1):
+        circle = rg.Circle(rg.Point(center.x+(2*k)*circle.radius, center.y), circle.radius)
+        circle.attach_to(window)
+        window.render(.5)
 
 # ----------------------------------------------------------------------
 # Calls  main  to start the ball rolling.
