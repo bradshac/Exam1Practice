@@ -181,9 +181,26 @@ def run_test_problem1b():
     expected = 5
     answer = problem1b(3, 5)
     print()
-    print('Test 4 expected:', expected)
+    print('Test 1 expected:', expected)
     print('       actual:  ', answer)
 
+    expected = 1
+    answer = problem1b(2, 1)
+    print()
+    print('Test 2 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 44
+    answer = problem1b(5, 40)
+    print()
+    print('Test 3 expected:', expected)
+    print('       actual:  ', answer)
+
+    expected = 27
+    answer = problem1b(5, 22)
+    print()
+    print('Test 4 expected:', expected)
+    print('       actual:  ', answer)
 def problem1b(m, f):
     """
     What comes in:  Positive integers m and f such that m >= 2.
@@ -201,7 +218,7 @@ def problem1b(m, f):
            since there are 44 primes between 5 and 200.
      """
     # ------------------------------------------------------------------
-    # TODO: 5. Implement and test this function.
+    # Done: 5. Implement and test this function.
     #   Note that you should write its TEST function first (above).
     #
     ####################################################################
@@ -319,6 +336,14 @@ def problem1c(n):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 20 minutes.
     # ------------------------------------------------------------------
+
+    x = 1
+    for k in range(n + 1):
+        if k >= 2:
+            if is_prime(k) == True:
+                x = x * k
+    x = sum_of_digits(x)
+    return x
 
 
 # ----------------------------------------------------------------------
