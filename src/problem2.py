@@ -111,13 +111,19 @@ def problem2a(circle, rectangle, window):
     #    TIME ESTIMATE:   10 to 15 minutes.
     # ------------------------------------------------------------------
 
-    Line = rg.Line(rg.Point(rectangle.corner_2.x, rectangle.corner_1.y), rg.Point(rectangle.corner_1.x, rectangle.corner_2.y))
     rectangle.attach_to(window)
     circle.attach_to(window)
-    window._on_mouse_click(rg.RoseWindow, 450, 250)
-    Line.attach_to(window)
-    window._on_mouse_click(rg.RoseWindow, 450, 250)
+
+    window.render()
+    window.continue_on_mouse_click()
+    line = rg.Line(rg.Point(rectangle.get_upper_right_corner().x, rectangle.get_upper_right_corner().y), rg.Point(rectangle.get_lower_left_corner().x, rectangle.get_lower_left_corner().y))
+    line.arrow = "last"
+    line.attach_to(window)
+    window.render()
+    window.continue_on_mouse_click()
     circle.fill_color = rectangle.outline_color
+    window.render()
+    window.continue_on_mouse_click()
 
 
 def run_test_problem2b():
@@ -190,11 +196,14 @@ def problem2b(rect, n, delta, win):
     #    DIFFICULTY:      7
     #    TIME ESTIMATE:   15 to 25 minutes.
     # ------------------------------------------------------------------
-    rect.attach_to(window)
-    length = abs(rectangle.corner_1.y - rectangle.corner_2.y)
-    width = abs(rectangle.corner_1.x - rectangle.corner_2.x)
+    rect.attach_to(win)
+    length = abs(rect.corner_1.y - rect.corner_2.y)
+    width = abs(rect.corner_1.x - rect.corner_2.x)
     for k in range(n):
-        rectangle = rg.Rectangle(rg.Point(rect.corner_1.x - 2*delta*(k+1)), rect.corner_1.y)
+        rectangle = rg.Rectangle(rg.Point(rect.corner_1.x - delta*(k+1)*width/2, rect.corner_1.y - delta*(k+1)*length/2), rg.Point(rect.corner_2.x + delta*(k+1)*width/2, rect.corner_2.y + delta*(k+1)*length/2))
+        rectangle.attach_to(win)
+        win.render()
+
 
 
 # ----------------------------------------------------------------------
