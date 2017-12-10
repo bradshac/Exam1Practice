@@ -199,7 +199,7 @@ def problem2b(rect, n, delta, win):
     rect.attach_to(win)
 
     for k in range(n):
-        rectangle = rg.Rectangle(rg.Point(rect.get_upper_left_corner().x - delta*(k+1), rect.get_upper_left_corner().y - delta*(k+1)), rg.Point(rect._lower_right_corner.x + delta*(k+1), rect.get_lower_right_corner().y + delta*(k+1)))
+        rectangle = rg.Rectangle(rg.Point(rect.get_upper_left_corner().x - delta*(k), rect.get_upper_left_corner().y - delta*(k)), rg.Point(rect._lower_right_corner.x + delta*(k), rect.get_lower_right_corner().y + delta*(k)))
         rectangle.attach_to(win)
         win.render()
 
